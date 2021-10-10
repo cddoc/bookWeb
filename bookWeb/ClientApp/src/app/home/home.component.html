@@ -1,0 +1,48 @@
+<h1>Книжный клуб</h1>
+<div>
+  Логин
+  <input id="tbLogin" type="text" [(ngModel)]="name" />
+  <button (click)="Login(name)">Вход</button>
+</div>
+
+<div>
+  <h1>Книги</h1>
+
+  <table id="book" class='table table-striped' aria-labelledby="tableLabel" *ngIf="listbooks">
+    <thead>
+      <tr>
+        <th>Автор</th>
+        <th>Заголовок</th>
+        <th>ID</th>
+        <th>Избранное</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let listbook of listbooks">
+        <td>{{ listbook.title }}</td>
+        <td>{{ listbook.author }}</td>
+        <td>{{ listbook.bookID }}</td>
+        <td><i (click)="addFavorit(listbook)">Добавить</i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h1>Избранное</h1>
+
+  <table id="fbook" class='table table-striped' aria-labelledby="tableLabel" *ngIf="listbookfavorits">
+    <thead>
+      <tr>
+        <th>Автор</th>
+        <th>Заголовок</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let listbookfavorit of listbookfavorits">
+        <td>{{ listbookfavorit.title }}</td>
+        <td>{{ listbookfavorit.author }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
